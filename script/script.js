@@ -96,8 +96,8 @@ const questions = [
 
 window.addEventListener("load", function () {
   // Bottone di prova per il timer
-  let button = document.querySelector("#contoRovescia");
-  button.addEventListener("click", () => updateTimer());
+  let prova = document.querySelector("#contoRovescia");
+  prova.addEventListener("click", () => updateTimer());
   // Fine bottone di prova
 });
 
