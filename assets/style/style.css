@@ -144,8 +144,13 @@ input[type="checkbox"]:checked::before {
   font-size: 19px;
   border: none;
   margin-left: 24%;
-  box-shadow: 0 0 30px rgba(25, 246, 255, 0.9);
+   transition: 0.3s;
+  /* box-shadow: 0 0 30px rgba(25, 246, 255, 0.9); */
   cursor: pointer;
+}
+
+.proceedBtn:hover {
+  box-shadow: 0 0 30px rgba(25, 246, 255, 0.9);
 }
 
 .timerContainer {
@@ -220,6 +225,11 @@ input[type="checkbox"]:checked::before {
   color: white;
   border-radius: 20px;
   background-color: #d2009321;
+  font-size: larger;
+  display: flex;
+  justify-content: center;
+align-items: center;
+text-align: center;
 }
 
 .questionContainer {
