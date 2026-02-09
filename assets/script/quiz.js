@@ -103,9 +103,9 @@ window.addEventListener("load", function () {
   let timerElement = document.querySelector(".timer");
 });
 
-const TIMELIMIT = 30;
+let TimeLimit = 0;
 let timePassed = 0;
-let timeLeft = TIMELIMIT;
+let timeLeft = TimeLimit;
 let currentObject = {};
 let risposte = [];
 let punteggio = 0;
@@ -128,6 +128,7 @@ function randomQuestion() {
   titleContainer.innerHTML = `<h1>${questionTitle}</h1>`;
   randomAnswers();
   injectAnswers();
+  getSeconds(currentObject.difficulty);
   startTimer();
 }
 function randomAnswers() {
@@ -186,13 +187,29 @@ function injectAnswers() {
     });
   });
 }
+
+// In questo modo il tempo di ogni domanda dipende dalla sua difficoltà
+function getSeconds(difficoltà) {
+  switch (difficoltà) {
+    case "easy":
+      TimeLimit = 30;
+      break;
+    case "medium":
+      TimeLimit = 45;
+      break;
+    case "hard":
+      TimeLimit = 60;
+      break;
+  }
+}
+
 // Funzione per fare il conto alla rovescia
 function startTimer() {
   if (timerId) {
     clearInterval(timerId);
   }
   timePassed = 0;
-  timeLeft = TIMELIMIT;
+  timeLeft = TimeLimit;
 
   let secondiElement = this.document.querySelector(".secondi");
   const circleElement = document.querySelector(".timer");
@@ -201,7 +218,7 @@ function startTimer() {
   secondiElement.textContent = timeLeft;
   timerId = setInterval(() => {
     timePassed++;
-    timeLeft = TIMELIMIT - timePassed;
+    timeLeft = TimeLimit - timePassed;
     console.log(timeLeft);
     updateCircle(circleElement);
     if (timeLeft <= 0) {
@@ -215,7 +232,7 @@ function startTimer() {
 }
 
 function updateCircle(element) {
-  const percentage = (timePassed / TIMELIMIT) * 100;
+  const percentage = (timePassed / TimeLimit) * 100;
 
   element.style.background = `
     radial-gradient(closest-side, #1e0b36 79%, transparent 80% 100%),

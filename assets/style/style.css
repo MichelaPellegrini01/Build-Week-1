@@ -9,18 +9,27 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-.logoContainer,
 header {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 200px;
+  position: relative;
+}
+
+.logoContainer {
+  width: auto;
 }
 
 .logoContainer img {
-  width: 145px;
-  height: 33px;
+  width: 220px;
+  height: auto;
   padding: 0;
-  margin: 30px 70px;
+  margin: 0;
 }
 
 .title {
@@ -135,32 +144,38 @@ input[type="checkbox"]:checked::before {
   margin-top: -2px;
 }
 
+
+#disclaimer:checked~.proceedBtn {
+  background-color: #00ffff;
+  color: black;
+  pointer-events: auto;
+}
+
 .proceedBtn {
   width: 180px;
   height: 53px;
-  background-color: #00ffff;
-  color: black;
+  background-color: rgba(70, 70, 70, 0.2);
+  color: rgba(0, 0, 0, 0.604);
   font-weight: bolder;
   font-size: 19px;
   border: none;
   margin-left: 24%;
-   transition: 0.3s;
-  /* box-shadow: 0 0 30px rgba(25, 246, 255, 0.9); */
+  transition: 0.3s;
+  pointer-events: none;
   cursor: pointer;
 }
 
-.proceedBtn:hover {
+#disclaimer:checked~.proceedBtn:hover {
   box-shadow: 0 0 30px rgba(25, 246, 255, 0.9);
 }
 
 .timerContainer {
-  width: 100%;
+  width: auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  position: absolute;
-  top: 50px;
-  left: 850px;
+  align-items: center;
 }
 
 .timer {
@@ -225,24 +240,18 @@ input[type="checkbox"]:checked::before {
   color: white;
   border-radius: 20px;
   background-color: #d2009321;
-  font-size: larger;
-  display: flex;
-  justify-content: center;
-align-items: center;
-text-align: center;
 }
 
 .questionContainer {
   display: flex;
   flex-direction: column;
-  margin-top: 80px;
   width: 90%;
   max-width: 1200px;
   min-height: 500px;
   margin-left: auto;
   margin-right: auto;
-  height: 60vh;
-  gap: 70px;
+  min-height: 500px;
+  gap: 50px;
 }
 
 .questionCard {
@@ -256,10 +265,12 @@ text-align: center;
 .questionCard .mainText {
   width: 100%;
   max-width: 700px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
+  overflow: hidden;
 }
 
 .questionCard .mainText h1 {
@@ -320,16 +331,15 @@ text-align: center;
 }
 
 .resultContainer {
-  position: absolute;
-  bottom: 50px;
-  left: 0;
-  right: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   color: white;
   font-family: "Outfit", sans-serif;
   font-size: 20px;
   line-height: 55px;
+  margin-top: auto;
+  padding-bottom: 30px;
 }
 
 .resultContainer p strong {
